@@ -1,3 +1,5 @@
+
+#!Waring : You cannot reverse a string in 0(1) time but can do so in 0(1) space 
 '''
 Ex: Given the following strings...
 
@@ -67,6 +69,13 @@ splice("Cat")
 # reverse_list(names)
 
 def reverse_using_join(word):
+    ''' 
+        Description : Reverses a string 
+        Parameters:
+            word : string -> The string to reverse 
+        Return :
+            The reversed string 
+    '''
     return "".join(reversed(word))
 
 print(reverse_using_join("butterfly"))
