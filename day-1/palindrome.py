@@ -38,6 +38,24 @@ def palindrome_second(word : str) -> bool :
     reversed_word = reverse_using_join(worded) 
     return reversed_word == worded
 
-print(palindrome_second("A man , a plan , a canal; Panama"))
+print(palindrome_second("A man , a plan , a canal; Panama")) 
 
+def recursive_palindrome(word):
+    '''
+        The basic idea for recursion is that the function calls itself 
 
+        A recursive function needs to know when it needs to end if you need 
+        it to end at some points.
+
+    '''
+    if len(word) == 0 or  len(word) == 1 :  return True 
+
+    first_char = word[0] 
+    mid = word[1:len(word) - 1]
+    last_char = word[-1] 
+   
+    if first_char != last_char : return False 
+   
+    return recursive_palindrome(mid)
+
+print(recursive_palindrome("aba"))
