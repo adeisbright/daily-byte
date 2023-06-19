@@ -44,3 +44,29 @@ def splice(word):
     print(word[::-1])
     
 splice("Cat")
+
+# names = ["Ade" , "Priya" , "Salman" , "Arushi"] 
+
+# reversed_names = []
+
+# def reverse_list(word) :
+#     ''' Reverses a list '''
+
+#     result  = []
+#     word_length = len(word)
+#     loop_count = 0
+  
+
+#     while(loop_count < word_length ):
+
+#         result.append(word[word_length - 1 - loop_count])
+#         loop_count = loop_count + 1
+
+#     print(result)
+
+# reverse_list(names)
+
+def reverse_using_join(word):
+    return "".join(reversed(word))
+
+print(reverse_using_join("butterfly"))
