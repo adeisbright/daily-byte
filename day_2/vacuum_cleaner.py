@@ -11,7 +11,7 @@ Ex: Given the following strings...
 "RUULLDRD", return true
 '''
 
-def will_cleaner_return(moves : str) -> str :
+def will_cleaner_return(moves : str) -> bool :
     x_moves = 0 
     y_moves = 0 
 
