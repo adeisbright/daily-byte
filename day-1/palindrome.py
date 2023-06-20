@@ -59,14 +59,14 @@ def recursive_palindrome(word):
     if len(word) == 0 or  len(word) == 1 :  return True 
 
     first_char = word[0] 
-    mid = word[1:len(word) - 1]
+    mid = word[1: - 1]
     last_char = word[-1] 
    
     if first_char != last_char : return False 
    
     return recursive_palindrome(mid)
 
-#print(recursive_palindrome("aba"))
+print(recursive_palindrome("moom"))
 
 
 
