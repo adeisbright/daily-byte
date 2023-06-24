@@ -10,4 +10,17 @@ Ex: Given the following strings...
 
 '''
 def first_unique_character(word):
-    return 0 
+    char_dict = {}
+    for (index , char ) in enumerate(word):
+        if char in char_dict:
+           del char_dict[char]
+        else:
+            char_dict[char] = index 
+    values = list(char_dict.values())
+    return values[0] 
+
+if __name__ == "__main__":
+    word = "developer"
+    
+    test = first_unique_character(word)
+    print(test)
