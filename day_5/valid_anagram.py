@@ -12,6 +12,8 @@ s = "program", t = "function", return false
 '''
 def valid_anagram(s , t):
     ''' I assume that both words will contain unique characters  '''
+    if len(s) != len(t) : return False 
+    
     t_hash = set()
     for char in t :
         t_hash.add(char)
