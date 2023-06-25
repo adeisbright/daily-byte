@@ -45,6 +45,16 @@ class LinkedList:
 
         self.tail = node 
         self.length += 1 
+    def prepend(self,item):
+        node = Node(item) 
+        head = self.head 
+        self.head = node 
+        self.head.next = head 
+        
+        if not self.tail:
+            self.tail = node 
+      
+        self.length += 1 
     
     def show(self):
         head = self.head 
@@ -58,6 +68,7 @@ if __name__ == "__main__":
 
     ll = LinkedList() 
     ll.append(5)
+    ll.prepend(8)
     ll.append(6)
     ll.append(2)
     ll.show()
