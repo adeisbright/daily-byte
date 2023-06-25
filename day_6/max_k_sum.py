@@ -52,9 +52,44 @@ def max_k_sum(nums , k):
         i += 1 
     return max_sum 
 
+def using_window_sliding(nums , k):
+    ''' 
+        Window sliding is a technique for reducing the time complexity of 
+        an algorithm from O(N^2)  to O(N). 
+
+        For this technique to be efficient, your algorithm or the problem should 
+        be such that it supports initial accumulation. 
+
+        Then when you move to the front, you can remove items or number that is 
+        at a particular distance from the current point of your loop. 
+        
+    '''
+
+    if(len(nums) <= k) : return "Invalid"
+    
+    nums_length = len(nums)  
+    
+    # Get the first k sum  
+    first_k_nums = nums[0:k] 
+
+    current_sum = sum(first_k_nums)
+    max_k_sum = current_sum
+
+    i = k 
+
+    while i  <  nums_length:
+
+        current_sum += nums[i] - nums[i - k]
+
+        if(current_sum > max_k_sum): max_k_sum = current_sum
+
+        i += 1 
+    return max_k_sum 
+
+
 if __name__ == "__main__":
-    arr = [2, 3] 
-    k = 3
-    test= max_k_sum(arr , k)
+    arr = [100, 200, 300, 400] 
+    k = 2
+    test= using_window_sliding(arr , k)
     print(test)
 
