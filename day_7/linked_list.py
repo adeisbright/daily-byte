@@ -103,6 +103,50 @@ class LinkedList:
             
             previous_node = current_node 
             current_node = current_node.next 
+    
+    def insert_before(self , existing_value , new_value):
+        ''' Inserts a new value to the linked list before 
+            an existing value 
+        '''
+        if not self.head:
+            return None 
+        
+        node = Node(new_value)
+
+        current_node = self.head 
+        previous_node = None 
+
+        while current_node:
+            if current_node.value == existing_value:
+                if previous_node:
+                    node.next = current_node
+                    previous_node.next =  node 
+                    return 
+                else:
+                    self.head = node
+            
+            previous_node = current_node 
+            current_node = current_node.next 
+
+    def insert_after(self , existing_value , new_value):
+        ''' Inserts a new value to the linked list after
+            an existing value 
+        '''
+        if not self.head:
+            return None 
+        
+        node = Node(new_value)
+
+        current_node = self.head 
+
+        while current_node:
+            if current_node.value == existing_value:
+                node.next = current_node.next 
+                current_node.next = node 
+                return 
+            
+            current_node = current_node.next 
+
 
 if __name__ == "__main__":
 
@@ -113,6 +157,8 @@ if __name__ == "__main__":
 
     ll.append(6)
     ll.append(2)
+    ll.insert_before(2 , 10)
+    ll.insert_after(10 , 15)
     ll.show()
     ll.delete(5)
     ll.show()
