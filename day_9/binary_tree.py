@@ -18,4 +18,7 @@ class Node :
 
 class BinaryTree:
     def __init__(self) -> None:
-        pass 
+        self.root = None 
+    
+    def add_node(self,data):
+        return self.root
