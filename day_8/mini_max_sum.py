@@ -10,3 +10,7 @@ The minimum sum is  and the maximum sum is . The function prints 16 24
 
 '''
 
+def mini_max_sum(*integers):
+    return True
+
+
