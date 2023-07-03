@@ -20,32 +20,33 @@ class BinaryTree:
     def __init__(self) -> None:
         self.root = None 
     
-    def insert(self,data):
-        if self.root is None :
+    def insert(self , data):
+        if self.root is None:
             self.root = BinaryNode(data)
         else:
-            self.add_node(self.root , data) 
+            self._insert_helper(self.root , data)
     
-    def add_node(self , node , data):
+    def _insert_helper(self , node , data):
         if data < node.data :
             if node.left is None :
                 node.left = BinaryNode(data)
             else:
-                self.add_node(node.left , data)
+                self._insert_helper(node.left , data)
         else:
             if node.right is None :
                 node.right = BinaryNode(data)
             else:
-                self.add_node(node.right , data)
+                self._insert_helper(node.right , data)
+
+    def traverse(self):
+        self._traverse_helper(self.root)
     
-    def run(self):
-        self.traverse(self.root)
-    
-    def traverse(self , node):
+    def _traverse_helper(self , node):
         if node is not None:
-            self.traverse(node.left)
+            self._traverse_helper(node.left)
             print(node.data) 
-            self.traverse(node.right) 
+            self._traverse_helper(node.right)
+
     
 if __name__ == "__main__":
     
@@ -62,4 +63,4 @@ if __name__ == "__main__":
     tree.insert(9)
 
     # Traverse the binary tree in inorder
-    tree.run()
+    tree.traverse()
