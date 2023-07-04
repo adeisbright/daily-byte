@@ -170,6 +170,19 @@ class LinkedList:
             current = next 
 
         self.head = previous   
+    def remove_all(self , data):
+        previous = None 
+        current = self.head 
+
+        while current:
+            if current.value == data :
+                if previous:
+                    previous.next = current.next 
+                else:
+                    self.head = current 
+            previous = current 
+            current = current.next 
+    
 if __name__ == "__main__":
 
     ll = LinkedList() 
@@ -191,10 +204,13 @@ if __name__ == "__main__":
     ll.append(4) 
     ll.append(5) 
     ll.append(6)
+    ll.append(2)
 
-    ll.reverse()
+    # ll.reverse()
     ll.show()
-    ll.get_middle_item()
+    ll.get_middle_item() 
+    ll.remove_all(2) 
+    ll.show()
     
 
     
