@@ -170,6 +170,7 @@ class LinkedList:
             current = next 
 
         self.head = previous   
+
     def remove_all(self , data):
         previous = None 
         current = self.head 
@@ -182,6 +183,33 @@ class LinkedList:
                     self.head = current 
             previous = current 
             current = current.next 
+    
+    def remove_from_end(self , position):
+        list_length = 0 # Assuming we do not have access to the list size 
+        current = self.head 
+        while current:
+            current = current.next 
+            list_length += 1 
+
+        index_of_item = list_length - position # Index of item to delete from beginning 
+
+        normal_index = 0 
+
+        current = self.head 
+        previous = None 
+
+        while current and normal_index <= index_of_item:
+            if normal_index == index_of_item:
+                if previous:
+                    previous.next = current.next 
+                else:
+                    self.head = current 
+
+            previous = current 
+            current = current.next 
+            normal_index += 1 
+
+
     
 if __name__ == "__main__":
 
@@ -208,8 +236,7 @@ if __name__ == "__main__":
 
     # ll.reverse()
     ll.show()
-    ll.get_middle_item() 
-    ll.remove_all(2) 
+    ll.remove_from_end(3) 
     ll.show()
     
 
