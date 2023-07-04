@@ -146,21 +146,70 @@ class LinkedList:
                 return 
             
             current_node = current_node.next 
+    
+    def get_middle_item(self):
+        link_size = self.length 
+        middle = link_size//2 
 
+        current_item = self.head 
 
+        while middle != 0 :
+            current_item = current_item.next 
+            middle -= 1 
+        print(current_item.value)
+
+    def reverse(self):
+        previous = None 
+        next = None 
+        current = self.head 
+
+        while current :
+            next = current.next  
+            current.next = previous 
+            previous = current 
+            current = next 
+
+        self.head = previous   
+    def remove_all(self , data):
+        previous = None 
+        current = self.head 
+
+        while current:
+            if current.value == data :
+                if previous:
+                    previous.next = current.next 
+                else:
+                    self.head = current 
+            previous = current 
+            current = current.next 
+    
 if __name__ == "__main__":
 
     ll = LinkedList() 
-    ll.append(5)
-    ll.prepend(8)
+    # ll.append(5)
+    # ll.prepend(8)
    
 
+    # ll.append(6)
+    # ll.append(2)
+    # ll.insert_before(2 , 10)
+    # ll.insert_after(10 , 15)
+    # ll.show()
+    # ll.delete(5)
+    # ll.show()
+
+    ll.append(1) 
+    ll.append(2) 
+    ll.append(3) 
+    ll.append(4) 
+    ll.append(5) 
     ll.append(6)
     ll.append(2)
-    ll.insert_before(2 , 10)
-    ll.insert_after(10 , 15)
+
+    # ll.reverse()
     ll.show()
-    ll.delete(5)
+    ll.get_middle_item() 
+    ll.remove_all(2) 
     ll.show()
     
 
