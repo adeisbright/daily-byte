@@ -146,22 +146,42 @@ class LinkedList:
                 return 
             
             current_node = current_node.next 
+    
+    def get_middle_item(self):
+        link_size = self.length 
+        middle = link_size//2 
+
+        current_item = self.head 
+
+        while middle != 0 :
+            current_item = current_item.next 
+            middle -= 1 
+        print(current_item.value)
 
 
 if __name__ == "__main__":
 
     ll = LinkedList() 
-    ll.append(5)
-    ll.prepend(8)
+    # ll.append(5)
+    # ll.prepend(8)
    
 
+    # ll.append(6)
+    # ll.append(2)
+    # ll.insert_before(2 , 10)
+    # ll.insert_after(10 , 15)
+    # ll.show()
+    # ll.delete(5)
+    # ll.show()
+
+    ll.append(1) 
+    ll.append(2) 
+    ll.append(3) 
+    ll.append(4) 
+    ll.append(5) 
     ll.append(6)
-    ll.append(2)
-    ll.insert_before(2 , 10)
-    ll.insert_after(10 , 15)
-    ll.show()
-    ll.delete(5)
-    ll.show()
+
+    ll.get_middle_item()
     
 
     
