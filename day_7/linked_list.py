@@ -158,7 +158,18 @@ class LinkedList:
             middle -= 1 
         print(current_item.value)
 
+    def reverse(self):
+        previous = None 
+        next = None 
+        current = self.head 
 
+        while current :
+            next = current.next  
+            current.next = previous 
+            previous = current 
+            current = next 
+
+        self.head = previous   
 if __name__ == "__main__":
 
     ll = LinkedList() 
@@ -181,6 +192,8 @@ if __name__ == "__main__":
     ll.append(5) 
     ll.append(6)
 
+    ll.reverse()
+    ll.show()
     ll.get_middle_item()
     
 
