@@ -66,7 +66,8 @@ def recursive_palindrome(word):
    
     return recursive_palindrome(mid)
 
-print(recursive_palindrome("moom"))
+if __name__ == "__main__":
+    print(recursive_palindrome("moom"))
 
 
 
