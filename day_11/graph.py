@@ -88,6 +88,7 @@
 '''
 
 class Graph:
+    ''' This graph implementation uses an undirected graph '''
     def __init__(self , size):
         self.vertices = size 
         self.vertex = {}
@@ -100,7 +101,12 @@ class Graph:
         try:
             if self.vertex.get(node1) is None or self.vertex.get(node2) is None:
                 raise Exception("You have a non-existent node")
-          
+            first_edge_count = self.vertex[node1].count(node2)  
+            second_edge_count = self.vertex[node2].count(node1) 
+
+            if  first_edge_count != 0 or  second_edge_count != 0 :
+                raise Exception("Edge already exist between {node1} and {node2}".format(node1=node1 , node2=node2))
+            
             self.vertex[node1].append(node2) 
             self.vertex[node2].append(node1)
         except Exception as error:
@@ -125,6 +131,7 @@ if __name__ == "__main__":
     g.add_vertex(3)
     g.add_vertex(1) 
     g.add_edge(2 , 3)
+    g.add_edge(1 , 2)
     g.add_edge(1 , 2)
 
     g.print_graph() 
