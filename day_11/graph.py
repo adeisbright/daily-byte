@@ -86,16 +86,21 @@
 
  
 '''
+import sys 
+from os import path 
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__)))) 
+
+from day_8.queue import Queue 
 
 class Graph:
     ''' This graph implementation uses an undirected graph '''
-    def __init__(self , size):
-        self.vertices = size 
+    def __init__(self):
+
         self.vertex = {}
-        self.edges = [] 
 
     def add_vertex(self , data):
-        self.vertex[data] = []
+        if data not in self.vertex:
+            self.vertex[data] = []
     
     def add_edge(self , node1 , node2):
         try:
@@ -125,8 +130,27 @@ class Graph:
             print(str(vertex) + " -> "  , linear_edges)
             # Get all the edges 
 
+    def bfs(self , starting_vertex):
+        visited = set() 
+
+        queue = Queue() 
+        queue.enqueue(starting_vertex) 
+
+        while queue:
+            vertex = queue.dequeue() 
+
+            if vertex not in visited:
+                visited.add(vertex) 
+                print(vertex)
+            neighbors = self.vertex[vertex] 
+
+            for neighbor in neighbors:
+                if neighbor not in visited:
+                    queue.enqueue(neighbor) 
 if __name__ == "__main__":
-    g = Graph(10) 
+
+    g = Graph() 
+    g.add_vertex(2) 
     g.add_vertex(2) 
     g.add_vertex(3)
     g.add_vertex(1) 
@@ -135,3 +159,5 @@ if __name__ == "__main__":
     g.add_edge(1 , 2)
 
     g.print_graph() 
+
+    g.bfs(2)

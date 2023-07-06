@@ -66,6 +66,11 @@ if __name__ == "__main__":
     q.show()
     q.dequeue() 
     q.show()
+
+    q1 = Queue() 
+    q1.enqueue(10)
+    t = q1.dequeue() 
+    print(t)
     
 
         
