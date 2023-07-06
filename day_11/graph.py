@@ -89,13 +89,13 @@
 
 class Graph:
     ''' This graph implementation uses an undirected graph '''
-    def __init__(self , size):
-        self.vertices = size 
+    def __init__(self):
+
         self.vertex = {}
-        self.edges = [] 
 
     def add_vertex(self , data):
-        self.vertex[data] = []
+        if data not in self.vertex:
+            self.vertex[data] = []
     
     def add_edge(self , node1 , node2):
         try:
@@ -126,7 +126,9 @@ class Graph:
             # Get all the edges 
 
 if __name__ == "__main__":
-    g = Graph(10) 
+
+    g = Graph() 
+    g.add_vertex(2) 
     g.add_vertex(2) 
     g.add_vertex(3)
     g.add_vertex(1) 
