@@ -135,18 +135,21 @@ class Graph:
 
         queue = Queue() 
         queue.enqueue(starting_vertex) 
-
+     
+       
+      
         while queue:
             vertex = queue.dequeue() 
-
-            if vertex not in visited:
+           
+            if vertex and vertex not in visited:
                 visited.add(vertex) 
-                print(vertex)
-            neighbors = self.vertex[vertex] 
+                print("vertex ->" , vertex)
+            if vertex:
+                neighbors = self.vertex[vertex] 
 
-            for neighbor in neighbors:
-                if neighbor not in visited:
-                    queue.enqueue(neighbor) 
+                for neighbor in neighbors:
+                    if neighbor not in visited:
+                        queue.enqueue(neighbor) 
 if __name__ == "__main__":
 
     g = Graph() 
