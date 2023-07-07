@@ -1,11 +1,11 @@
 class Node:
-    def __init__(self,value) -> None:
+    def __init__(self,value):
         self.value = value 
         self.next = None 
 
 
 class Queue :
-    def __init__(self) -> None:
+    def __init__(self):
         self.front = None 
         self.back = None 
         self.size = 0 
@@ -20,10 +20,12 @@ class Queue :
         self.back  = node  
         self.size += 1
 
-    def dequeue(self):
-
+    def dequeue(self): 
+        if self.front is None: return 
+        
         node = self.front 
         self.front = self.front.next
+       
         self.size -= 1
         return node.value 
 
