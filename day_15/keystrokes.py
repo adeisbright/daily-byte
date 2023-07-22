@@ -17,35 +17,41 @@ sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
 from day_8.stack import Stack
 
+def apply_backspace(word):
+    stack = Stack() 
+    for char in word :
+        if char == "#":
+            stack.pop() 
+        else:
+            stack.push(char)
+
+    return stack.stringnify() 
+
 def compare_keystrokes(s , t):
-    '''
-        1. We will loop over both characters till both are empty because any of them can contain # 
-        2. Each time we encounter # for a string, we will remove the character that is closer to it 
+    return apply_backspace(s) == apply_backspace(t)
 
-        2. The strings should be compared with one another after all # has been removed 
-    ''' 
-    s_stack = Stack() 
-    t_stack = Stack() 
-    for char in s :
+'''
+Note: The solution can be re-implemented using an array instead of a stack . 
+'''
+
+def apply_backspace_list(word):
+    stack = []
+    for char in word :
         if char == "#":
-            s_stack.pop() 
+            stack.pop() 
         else:
-            s_stack.push(char)
+            stack.append(char) 
+    
+    return "".join(stack) 
 
-    for char in t :
-        if char == "#":
-            t_stack.pop() 
-        else:
-            t_stack.push(char)
-
-    s1 = s_stack.stringnify() 
-    t1 = t_stack.stringnify() 
-
-    return s1 == t1 
+def compare_keystrokes_list(s , t):
+    return apply_backspace_list(s) == apply_backspace_list(t)
 
 if __name__ == "__main__":
-    s = "cof#dim#g "
-    t = "code"
+    s = "cof#dim#g"
+    t = "codig"
 
     test = compare_keystrokes(s , t) 
+    print(test)
+    test = compare_keystrokes_list(s , t) 
     print(test)
