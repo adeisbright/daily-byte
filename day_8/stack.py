@@ -55,6 +55,16 @@ class Stack :
             current_top = current_top.next 
         print(members)
 
+    def stringnify(self):
+        current_top = self.top 
+
+        members = ''
+        while current_top :
+
+            members += "{value}".format(value=current_top.value)
+
+            current_top = current_top.next 
+        return members
 
 if __name__ == "__main__":
     stack = Stack()
