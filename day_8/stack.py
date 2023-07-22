@@ -64,7 +64,7 @@ class Stack :
             members += "{value}".format(value=current_top.value)
 
             current_top = current_top.next 
-        return members
+        return "".join(reversed(members))
 
 if __name__ == "__main__":
     stack = Stack()
