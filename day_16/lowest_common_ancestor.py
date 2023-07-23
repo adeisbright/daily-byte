@@ -42,6 +42,7 @@ class BinaryNode:
         self.data = data  
         self.left = None 
         self.right = None 
+        self.parent = None 
     
 
 class Tree:
@@ -58,11 +59,13 @@ class Tree:
         if data < node.data:
             if node.left is None:
                 node.left = BinaryNode(data)
+                node.parent = node.data 
             else:
                 return self._add_node_helper(node.left , data)
         else:
             if node.right is None:
-                node.right = BinaryNode(data)
+                node.right = BinaryNode(data) 
+                node.parent = node.data 
             else:
                 return self._add_node_helper(node.right , data)
     
@@ -90,6 +93,22 @@ class Tree:
         
         return ancestors
     
+    def _get_ancestor_helper(self , root , a , b):
+        if root is None: return None 
+
+        #If both values are lower then the common  ancestor is on the left 
+        if a < root.data and b < root.data :
+            return  self._get_ancestor_helper(root.left , a , b)
+        #If the values are greater than the root node, then the CA is on the right 
+        if a > root.data and b > root.data :
+            return self._get_ancestor_helper(root.right , a , b) 
+        # Else the root node is the common ancestor 
+        return root.data 
+    
+    def get_common_ancestor(self , a , b):
+        return self._get_ancestor_helper(self.root , a , b)
+    
+
 if __name__ == "__main__":
     tree = Tree()
     tree.add_node(7) 
@@ -100,7 +119,6 @@ if __name__ == "__main__":
     tree.add_node(6) 
     tree.add_node(8) 
     
-    test = tree.get_ancestors(2)
-    
+    test = tree.get_common_ancestor(6 , 8)
 
     print(test)
