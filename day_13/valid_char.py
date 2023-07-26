@@ -41,7 +41,35 @@ def valid_char(chars):
                 stack.pop()
     return True 
 
+def correct_valid_char(s):
+    open_chars = ["(" , "{" , "["]
+    close_chars  = [")" , "}" , "]"]  
+
+    valid_char_hash = {
+        "(" :  ")" , 
+        "{"  : "}" , 
+        "[" :  "]"
+    }
+
+    sequence = [] 
+    if len(s) == 0 or len(s) == 1 : return False 
+
+    for char in s :
+        if char in open_chars :
+            sequence.append(char)
+        if char in close_chars:
+            if len(sequence) ==  0 : return False 
+            peek = sequence[-1]
+            valid_match = valid_char_hash[peek] 
+            if char != valid_match:
+                return False 
+            
+            sequence.pop()
+    
+    if len(sequence) > 0 and sequence[-1] in open_chars : return False 
+    return True 
+
 if __name__ == "__main__":
-    chars = "(){}[]" 
-    test = valid_char(chars)
+    chars = "((" 
+    test = correct_valid_char(chars)
     print(test)
