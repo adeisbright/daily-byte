@@ -17,5 +17,27 @@ def find_max_sum(numbers):
 
     return first_max + second_max    
 
+
+
+def solution(nums):
+    n = len(nums) 
+    first = max(nums[0] , nums[1]) 
+    second = min(nums[0] , nums[1]) 
+
+    for i in range(2 , n):
+        if nums[i] > first :
+          second = first 
+          first = nums[i] 
+        elif nums[i] > second :
+           second = nums[i]
+    
+
+
+    return first + second 
+
+
+
+
+
 if __name__ == "__main__":
-    print(find_max_sum([5, 9, 7, 11]))
+    print(solution([5, 9, 7, 11]))
