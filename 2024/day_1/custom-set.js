@@ -10,6 +10,7 @@
  * add(value) - Add an item to the set 
  * show() -  Display the items we have within our set 
  * has(value) -> Returns true if the value is in our custom set 
+ * remove(value)
  */
 
 class CustomSet {
@@ -17,6 +18,7 @@ class CustomSet {
     setSize = 0
     constructor(){
         this.set = {}
+        this.iterator = this.generateValues()
     }
     add(value){
         if (this.setSize && this.setType){
@@ -38,11 +40,19 @@ class CustomSet {
         return  hasValue
     }
     show(){
+        for (let value of this.generateValues()){
+           console.log(value)
+        }
+    }
+    *generateValues(){
         for (let key of Object.keys(this.set)){
             if(this.set.hasOwnProperty(key)){
-                console.log(key)
+               yield key
             }
         }
+    }
+    nextValue(){
+        return this.iterator.next().value
     }
 }
 
@@ -52,4 +62,8 @@ mySet.add(3)
 mySet.add(5)
 mySet.add(5)
 mySet.add(5)
-mySet.show()
+//mySet.show()
+console.log(mySet.nextValue())
+console.log(mySet.nextValue()) 
+console.log(mySet.nextValue())
+console.log(mySet.nextValue())
